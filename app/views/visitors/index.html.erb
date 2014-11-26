@@ -1,2 +1,24 @@
-<h3>Welcome</h3>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<!--<h3>Welcome</h3>
+<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>-->
+<video autoplay loop poster="<%= asset_path('movie.jpg') %>" id="home-vid" volume="0">
+  <source src="<%= asset_path('movie.mp4') %>" type="video/mp4">
+</video>
+<div id="home-pic"></div>
+<div id="home-banner">
+  <img src="<%= asset_path('logo.png') %>">
+  <h1 id="home-header" class="white"> Travl </h1>
+  <h2 class="white"> Plan your dream vacation </h2>
+</div>
+<div class="container">
+  <div class="content">
+    <h1> What We Do </h1>
+    <br><br>
+    <p> Travl is an online travel planner. Whenever you go to a new destination, there are plenty of adventures and scenes to experience and see! We've built this tool so that you can figure out what you want to do easily and coordinate with your travel companions at your convenience. Feel free to try it out below: </p>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    document.getElementById("home-vid").volume=0.0;
+  });
+</script>
+</html>
