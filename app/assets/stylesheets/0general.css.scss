@@ -1,3 +1,5 @@
+@import "variables.css.scss";
+
 body, html {
   width: 100%;
   height: 100%;
@@ -30,15 +32,15 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 50px;
   font-weight: 700;
-  color: #333;
+  color: $black;
 }
 
 h2 {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 300;
-  color: #333;
+  color: $black;
 }
 
 p {
@@ -47,9 +49,45 @@ p {
   font-size: 16px;
   line-height: 32px;
   font-weight: 400;
-  color: #333;
+  color: $dark-blue;
 }
 
 .white {
   color: #fff;
+}
+
+.button {
+  display: inline-block;
+  margin: auto;
+  padding: 15px 25px;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 6px;
+  font-weight: 400;
+  background: $blue;
+  margin-top: 15px;
+  color: #fff;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background: darken($blue, 20);
+  }
+}
+
+
+.bg1 {
+  background: $primary-color;
+}
+
+.bg1:hover {
+  background: darken($primary-color, 20);
+}
+
+.bg2 {
+  background: $secondary-color;
+}
+
+.bg2:hover {
+  background: darken($secondary-color, 20);
 }

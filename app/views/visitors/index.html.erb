@@ -8,6 +8,8 @@
   <img src="<%= asset_path('logo.png') %>">
   <h1 id="home-header" class="white"> Travl </h1>
   <h2 class="white"> Plan your dream vacation </h2>
+  <div id="home-tab1"><%= link_to 'Sign in', new_user_session_path, class: "button bg1"%></div>
+  <div id="home-tab2"><%= link_to 'Sign up', new_user_registration_path, class: "button bg2" %></div>
 </div>
 <div class="container">
   <div class="content">

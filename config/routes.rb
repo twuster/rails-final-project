@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   get 'welcome', to: 'users#welcome', as: 'welcome'
+  resources :boards
 end
