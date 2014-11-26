@@ -12,4 +12,7 @@ class UsersController < ApplicationController
     end
   end
 
+  def welcome
+  end
+
 end
