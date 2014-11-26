@@ -10,6 +10,10 @@ def create
 	redirect_to @board
 end
 
+def show
+	@board = Board.find(params[:id])
+end
+
 private
   def board_params
     params.require(:board).permit(:title)
