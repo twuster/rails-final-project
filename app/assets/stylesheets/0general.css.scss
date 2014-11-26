@@ -52,3 +52,39 @@ p {
 .white {
   color: #fff;
 }
+
+.button {
+  display: inline-block;
+  margin: auto;
+  padding: 15px 25px;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 6px;
+  font-weight: 400;
+  background: $blue;
+  margin-top: 15px;
+  color: #fff;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background: darken($blue, 20);
+  }
+}
+
+
+.bg1 {
+  background: $primary-color;
+}
+
+.bg1:hover {
+  background: darken($primary-color, 20);
+}
+
+.bg2 {
+  background: $secondary-color;
+}
+
+.bg2:hover {
+  background: darken($secondary-color, 20);
+}
