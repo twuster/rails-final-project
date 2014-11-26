@@ -8,8 +8,17 @@
   <img src="<%= asset_path('logo.png') %>">
   <h1 id="home-header" class="white"> Travl </h1>
   <h2 class="white"> Plan your dream vacation </h2>
-  <div id="home-tab1"><%= link_to 'Sign in', new_user_session_path, class: "button bg1"%></div>
-  <div id="home-tab2"><%= link_to 'Sign up', new_user_registration_path, class: "button bg2" %></div>
+  <% if user_signed_in? %>
+    <div id="home-tab1">
+      <%= link_to 'Dashboard', welcome_path, class: "button bg1"%>
+    </div>
+    <div id="home-tab2"><%= link_to 'Sign Out', destroy_user_session_path, :method=>'delete', class: "button bg2" %></div>
+  <% else %>
+    <div id="home-tab1">
+      <%= link_to 'Sign in', new_user_session_path, class: "button bg1"%>
+    </div>
+    <div id="home-tab2"><%= link_to 'Sign up', new_user_registration_path, class: "button bg2" %></div>
+  <% end %>
 </div>
 <div class="container">
   <div class="content">
