@@ -1,0 +1,240 @@
+h3 {
+	color: #d5dee5;
+	padding: 20px 10px;
+	text-align: center;
+	font-weight: 400;
+	font-size: 18px;
+  	font-family: 'Montserrat', sans-serif;
+}
+
+h4 {
+  	font-family: 'Montserrat', sans-serif;	
+  	margin-bottom: 15px;
+}
+
+.filler-small {
+	height: 30px;
+}
+
+.filler-medium {
+	height: 50px;
+}
+
+.filler-large {
+	height: 70px;
+}
+
+.welcome-logo {
+	height: 60px;
+	width: 60px;
+}
+
+.welcome-header {
+	left: 220px;
+	position: fixed;
+	background: #fafafa;
+	border-bottom: 1px solid #ccc;
+	width: 100%;
+	height: 70px;
+}
+
+.welcome-side-bar {
+	z-index: 1000;
+	color: #8691a3;
+	font-weight: normal;
+	position: fixed;
+	background: #354052;
+	width: 220px;
+	height: 100%;
+}
+
+.welcome-nav-links {
+	margin-top: 20px;
+	border-top: 1px solid #2f3849;
+	border-bottom: 1px solid #2f3849;
+	display: block;
+	list-style: none;
+}
+
+.welcome-nav-links li {
+	border-left: 2px solid #354052;
+	padding: 10px;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.welcome-nav-links li:hover {
+	border-left: 2px solid #43babc;
+	background: #2f3849;
+}
+
+.welcome-content-container {
+	font-size: 14px;
+	padding: 40px;
+	margin-left: 220px;
+}
+
+.welcome-grid {
+	overflow: hidden;
+	height: 200px;
+	width: 200px;
+	background: #eee;
+	margin: 10px 10px 0px 0px;
+	float: left;
+}
+
+/* STYLING THE BOARD HOVER */
+
+.grid {
+	position: relative;
+	max-width: 1000px;
+	list-style: none;
+	text-align: center;
+}
+
+.grid figure {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	margin: 10px 10px 0 0;
+	width: 300px;
+	height: 300px;
+	background: #2f3849;
+	text-align: center;
+	cursor: pointer;
+}
+
+.grid figure img {
+	position: relative;
+	display: block;
+	opacity: 0.95;
+}
+
+.grid figure:hover > .grid-img {
+	opacity: 0.35;
+	-webkit-transition: opacity 0.35s;
+	transition: opacity 0.35s;
+}
+
+.grid figure figcaption {
+	text-align: left;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 18px;
+	color: #fff;
+	text-transform: uppercase;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+	pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+figure.effect figcaption {
+	width: 300px;
+	top: auto;
+	bottom: 0;
+	height: 30px;
+	color: #43babc;
+	background: #2f3849;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(0,100%,0);
+	transform: translate3d(0,100%,0);
+}
+
+figure.effect h2 {
+	float: left;
+}
+
+figure.effect p {
+	margin-right: 30px;
+	margin-top: -25px;
+}
+
+figure.effect p.icon-links a {
+	text-decoration: none;
+	float: right;
+	color: #d8dfe5;
+}
+
+figure.effect:hover p.icon-links a:hover,
+figure.effect:hover p.icon-links a:focus {
+	color: #119cfb;
+}
+
+figure.effect p.description {
+	position: absolute;
+	left: 0;
+	width: 300px;
+	bottom: 140px;
+	color: #fff;
+	text-transform: none;
+	font-size: 90%;
+	opacity: 0;
+	-webkit-transition: opacity 0.35s;
+	transition: opacity 0.35s;
+	-webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
+}
+
+figure.effect h2,
+figure.effect p.icon-links a {
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(0,200%,0);
+	transform: translate3d(0,200%,0);
+}
+
+figure.effect p.icon-links a span::before {
+	display: inline-block;
+	font-family: 'feathericons';
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+figure.effect h2 {
+	display: inline-block;
+}
+
+figure.effect:hover p.description {
+	opacity: 1;
+}
+
+figure.effect:hover figcaption,
+figure.effect:hover h2,
+figure.effect:hover p.icon-links a {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.effect:hover h2 {
+	-webkit-transition-delay: 0.05s;
+	transition-delay: 0.05s;
+}
+
+figure.effect:hover p.icon-links a:nth-child(3) {
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+figure.effect:hover p.icon-links a:nth-child(2) {
+	-webkit-transition-delay: 0.15s;
+	transition-delay: 0.15s;
+}
+
+figure.effect:hover p.icon-links a:first-child {
+	-webkit-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
