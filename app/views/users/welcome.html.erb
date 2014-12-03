@@ -1,166 +1,3 @@
-<style>
-
-.grid {
-	position: relative;
-	max-width: 1000px;
-	list-style: none;
-	text-align: center;
-}
-
-.grid figure {
-	position: relative;
-	float: left;
-	overflow: hidden;
-	margin: 10px 10px 0 0;
-	width: 300px;
-	height: 300px;
-	background: #2f3849;
-	text-align: center;
-	cursor: pointer;
-}
-
-.grid figure img {
-	position: relative;
-	display: block;
-	opacity: 0.95;
-}
-
-.grid figure:hover > .grid-img {
-	opacity: 0.35;
-	-webkit-transition: opacity 0.35s;
-	transition: opacity 0.35s;
-}
-
-.grid figure figcaption {
-	text-align: left;
-	padding-top: 20px;
-	padding-bottom: 10px;
-	padding-left: 15px;
-	color: #fff;
-	text-transform: uppercase;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-.grid figure figcaption::before,
-.grid figure figcaption::after {
-	pointer-events: none;
-}
-
-.grid figure figcaption,
-.grid figure figcaption > a {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-figure.effect-zoe figcaption {
-	width: 300px;
-	top: auto;
-	bottom: 0;
-	height: 30px;
-	background: #eee;
-	color: #3c4a50;
-	-webkit-transition: -webkit-transform 0.35s;
-	transition: transform 0.35s;
-	-webkit-transform: translate3d(0,100%,0);
-	transform: translate3d(0,100%,0);
-}
-
-figure.effect-zoe h2 {
-	float: left;
-}
-
-figure.effect-zoe p {
-	margin-right: 30px;
-	margin-top: -25px;
-}
-
-figure.effect-zoe p.icon-links a {
-	text-decoration: none;
-	float: right;
-	color: #3c4a50;
-}
-
-figure.effect-zoe:hover p.icon-links a:hover,
-figure.effect-zoe:hover p.icon-links a:focus {
-	color: #252d31;
-}
-
-figure.effect-zoe p.description {
-	position: absolute;
-	left: 0;
-	width: 300px;
-	bottom: 140px;
-	color: #fff;
-	text-transform: none;
-	font-size: 90%;
-	opacity: 0;
-	-webkit-transition: opacity 0.35s;
-	transition: opacity 0.35s;
-	-webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
-}
-
-figure.effect-zoe h2,
-figure.effect-zoe p.icon-links a {
-	-webkit-transition: -webkit-transform 0.35s;
-	transition: transform 0.35s;
-	-webkit-transform: translate3d(0,200%,0);
-	transform: translate3d(0,200%,0);
-}
-
-figure.effect-zoe p.icon-links a span::before {
-	display: inline-block;
-	font-family: 'feathericons';
-	speak: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-figure.effect-zoe h2 {
-	display: inline-block;
-}
-
-figure.effect-zoe:hover p.description {
-	opacity: 1;
-}
-
-figure.effect-zoe:hover figcaption,
-figure.effect-zoe:hover h2,
-figure.effect-zoe:hover p.icon-links a {
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-}
-
-figure.effect-zoe:hover h2 {
-	-webkit-transition-delay: 0.05s;
-	transition-delay: 0.05s;
-}
-
-figure.effect-zoe:hover p.icon-links a:nth-child(3) {
-	-webkit-transition-delay: 0.1s;
-	transition-delay: 0.1s;
-}
-
-figure.effect-zoe:hover p.icon-links a:nth-child(2) {
-	-webkit-transition-delay: 0.15s;
-	transition-delay: 0.15s;
-}
-
-figure.effect-zoe:hover p.icon-links a:first-child {
-	-webkit-transition-delay: 0.2s;
-	transition-delay: 0.2s;
-}
-
-
-
-
-
-
-</style>
-
 <div class="welcome-side-bar">
 	<div class="filler-medium"></div>
 	<center>
@@ -183,7 +20,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 
 
 <div class="grid">
-	<figure class="effect-zoe">
+	<figure class="effect">
 		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.30925,-122.0436444&zoom=11&size=350x350"/>
 		<figcaption>
 			Board Title
@@ -200,7 +37,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 
 
 <div class="grid">
-	<figure class="effect-zoe">
+	<figure class="effect">
 		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
 		<figcaption>
 			Board Title
@@ -216,7 +53,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 </div>
 
 <div class="grid">
-	<figure class="effect-zoe">
+	<figure class="effect">
 		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=350x350"/>
 		<figcaption>
 			Board Title
