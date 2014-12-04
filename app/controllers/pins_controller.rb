@@ -26,6 +26,23 @@ class PinsController < ApplicationController
   	@pin = Pin.find(params[:id])
   end
 
+  def destroy
+    redirect_to :back
+    @pin = Pin.find(params[:id])
+    @pin.destroy
+    @pin.save
+
+    if Board.find(params[:board_id]).pins.count == 1
+      @board = Board.find(params[:board_id])
+      @first_pin = Board.find(params[:board_id]).pins.first
+      @board.latitude = @first_pin.lat
+      @board.longitude = @first_pin.lng
+      @board.full_view_latitude = @first_pin.lat
+      @board.full_view_longitude = @first_pin.lng
+      @board.save
+    end
+  end
+
   private
   def pin_params
     params.require(:pin).permit(:title, :board_id, :lat, :lng)

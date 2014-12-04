@@ -231,7 +231,7 @@ function loadPin(title, latitude, longitude) {
 					<% else %>
 					<% @board.pins.each do |p| %>
 					<!-- NEED TO IMPLEMENT THIS JAVASCRIPT CALL -->
-					<li><%= p.title %> <img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('<%= p.title %>', <%= p.lat %>, <%= p.lng %>)"> </li>
+					<li><%= p.title %> <img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('<%= p.title %>', <%= p.lat %>, <%= p.lng %>)"> <%= link_to 'Delete', pin_path(:id => p.id, :board_id => @board.id), :method=>'delete' %> </li>
 					<% end %>
 					<% end %>
 				</ul> 
