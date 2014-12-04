@@ -3,7 +3,7 @@
 	<center>
 		<img class="welcome-logo" src="<%= asset_path('logo.png') %>">
 	</center>
-	<h3>Hi <%= User.name %>!</h3>
+	<h3>Hi <%= current_user.name %>!</h3>
 	<ul class="welcome-nav-links">
 		<li><%= link_to 'All Boards', welcome_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
 		<li><%= link_to 'New Board', new_board_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
