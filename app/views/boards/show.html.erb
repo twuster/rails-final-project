@@ -20,10 +20,7 @@ var map = null;
 var marker = null;
 var markers_to_load = [];
 
-window.onload = initialize;
-
 function createMap() {
-	console.log("created map");
 	var myOptions = {
 		zoom: <%= @board.default_zoom %>,
 		center: new google.maps.LatLng("<%= @board.full_view_latitude %>", "<%= @board.full_view_longitude %>"),
@@ -32,6 +29,9 @@ function createMap() {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	map = new google.maps.Map(document.getElementById("full-view-map"), myOptions);
+
+	console.log("created map");
+	console.log(map);
 }
 
 // MAGIC
@@ -89,13 +89,6 @@ function initialize() {
 	if (map === null) {
 		createMap()
 	}
-
-	var add_this = new google.maps.Marker({
-		map: map,
-		draggable: false,
-		position: new google.maps.LatLng(longitude, latitude),
-		visible: true
-	});
 
 	google.maps.event.addListener(map, 'click', function() { infowindow.close(); });
 
@@ -189,7 +182,7 @@ function loadPin(title, latitude, longitude) {
 		visible: true
 	});
 
-	add_this.set(map);
+	markers_to_load.push(new_marker);
 	// var boxText = document.createElement("div");
 	// boxText.style.cssText = "color: #354052; background: #fff; padding: 10px; font-size: 13px; font-weight: 300; border-radius: 10px";
 	// boxText.innerHTML = title;
@@ -242,6 +235,7 @@ function loadPin(title, latitude, longitude) {
 					<% end %>
 					<% end %>
 				</ul> 
+				<img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="console.log(markers_to_load)"> 
 			</div>
 		</div>
 	</div>
