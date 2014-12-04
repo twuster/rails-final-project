@@ -13,48 +13,33 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
+      var map = null;
 
-    var map = null;
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+        var mapOptions = {
+          zoom: 4,
+          center: myLatlng
+        }
 
-function initialize() {
-  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-  var mapOptions = {
-    zoom: 4,
-    center: myLatlng
-  }
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      }
 
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
-  });
-
-  make_markers();
-}
-
-function make_markers() {
-
-  i = 0;
-  while (i < 10) {
-    var new_marker = new google.maps.Marker({
-      map: map,
-      draggable: false,
-      position: new google.maps.LatLng(37+i, -122-i),
-      visible: true,
-        title: "Hello World!"
-    });
-
-    new_marker.set(map);
-    i++;
-  }
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
+      function loadPin(title, latitude, longitude) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(latitude, longitude),
+          title: title
+        });
+      }
     </script>
   </head>
+
   <body>
     <div id="map-canvas"></div>
+
+    <li><img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="initialize()"> </li>
+    <li><img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('title 1', 37, -122)"> </li>
+    <li><img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('title 2', 45, -130)"> </li>
   </body>
 </html>

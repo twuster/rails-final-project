@@ -18,11 +18,9 @@
 // Initialize the map
 var map = null;
 var marker = null;
-
-window.onload = initialize;
+var markers_to_load = [];
 
 function createMap() {
-	console.log("created map");
 	var myOptions = {
 		zoom: <%= @board.default_zoom %>,
 		center: new google.maps.LatLng("<%= @board.full_view_latitude %>", "<%= @board.full_view_longitude %>"),
@@ -31,6 +29,9 @@ function createMap() {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	map = new google.maps.Map(document.getElementById("full-view-map"), myOptions);
+
+	console.log("created map");
+	console.log(map);
 }
 
 // MAGIC
@@ -62,6 +63,7 @@ var infowindow = new google.maps.InfoWindow({
 function createMarker(latlng, name, coordinates, html) {
 	var contentString = html;
 	var marker = new google.maps.Marker({
+		draggable: true,
 		position: latlng,
 		map: map,
 		zIndex: Math.round(latlng.lat()*-100000)<<5
@@ -85,7 +87,6 @@ function fillHiddenParams() {
 
 function initialize() {
 	if (map === null) {
-		window.alert("map null at initialize");
 		createMap()
 	}
 
@@ -174,10 +175,6 @@ function initialize() {
 };
     
 function loadPin(title, latitude, longitude) {
-	if (map === null) {
-		window.alert("map null at load pin");
-	};
-
 	var new_marker = new google.maps.Marker({
 		map: map,
 		draggable: false,
@@ -185,7 +182,7 @@ function loadPin(title, latitude, longitude) {
 		visible: true
 	});
 
-	new_marker.set(map);
+	markers_to_load.push(new_marker);
 	// var boxText = document.createElement("div");
 	// boxText.style.cssText = "color: #354052; background: #fff; padding: 10px; font-size: 13px; font-weight: 300; border-radius: 10px";
 	// boxText.innerHTML = title;
@@ -217,6 +214,7 @@ function loadPin(title, latitude, longitude) {
 		<div class="board-title board-title-open" id="board-title">
 			<div class="board-title-preview" onclick="openBoardDetails('board-title')">
 				<span class="board-name"><%= @board.title %></span>
+				<img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="initialize()"> 
 				<span class="board-options" id="board-arrow"><i class="fa fa-chevron-down"></i></span>
 			</div>
 			<div class="edit-board">
@@ -237,6 +235,7 @@ function loadPin(title, latitude, longitude) {
 					<% end %>
 					<% end %>
 				</ul> 
+				<img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="console.log(markers_to_load)"> 
 			</div>
 		</div>
 	</div>
