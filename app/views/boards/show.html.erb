@@ -3,7 +3,7 @@
 	<center>
 		<img class="welcome-logo" src="<%= asset_path('logo.png') %>">
 	</center>
-	<h3>Hi <%= User.name %>!</h3>
+	<h3>Hi <%= current_user.name %>!</h3>
 	<ul class="welcome-nav-links">
 		<li><%= link_to 'All Boards', welcome_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
 		<li><%= link_to 'New Board', new_board_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
@@ -78,10 +78,18 @@ function renderPin() {
 	}
 }
 
+var hiddenLatitude;
+var hiddenLongitude;
+
+function fillHiddenParams() {
+	document.getElementById('hidden-latitude').value = hiddenLatitude;
+	document.getElementById('hidden-longitude').value = hiddenLongitude;
+}
+
 function initialize() {
 	var myOptions = {
-		zoom: 4,
-		center: new google.maps.LatLng(42.5, -80.35),
+		zoom: <%= @board.default_zoom %>,
+		center: new google.maps.LatLng("<%= @board.full_view_latitude %>", "<%= @board.full_view_longitude %>"),
 		mapTypeControl: true,
 		navigationControl: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -97,15 +105,20 @@ function initialize() {
 			marker = null;
 		}
 
+		hiddenLatitude = event.latLng.lat();
+		hiddenLongitude = event.latLng.lng();
+
 		// marker = createMarker(event.latLng, "name", event.latLng, '' +
 		// 	'<input id="new-board-input" class="new-board-input" placeholder="Title"> <button class="new-pin-submit" onclick="renderPin()">Add Pin</button>' + 
 		// 	'<br>');
 		 
 		marker = createMarker(event.latLng, "name", event.latLng, '' +
-			'<%= form_for :pin, url: pins_path do |f| %>' + 
+			'<%= form_for :pin, url: pins_path do |f| %>' +
 			'<%= f.text_field :title, placeholder: "Title", :required => true, class: "new-board-input" %>' +
 			'<%= f.hidden_field :board_id, :value => @board.id %>' +
-			'<%= f.submit "Add Pin", class: "new-board-submit" %>' +
+			'<%= f.hidden_field :lat, { :id => "hidden-latitude" } %>' +
+			'<%= f.hidden_field :lng, { :id => "hidden-longitude" } %>' +
+			'<%= f.submit "Add Pin", class: "new-board-submit", :onclick => "fillHiddenParams()" %>' +
 			'<% end %>'); 
 	});
 
