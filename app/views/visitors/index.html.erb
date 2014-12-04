@@ -76,7 +76,11 @@
     <img id="home-travl" src="<%= asset_path('travel.svg') %>">
     <h1 class="white"> Happy Travling! </h2>
     <br>
-    <%= link_to 'Start Now', new_user_session_path, class: "button"%>
+    <% if user_signed_in? %>
+      <%= link_to 'Start Now', welcome_path, class: "button"%>
+    <% else %>
+      <%= link_to 'Start Now', new_user_session_path, class: "button"%>
+    <% end %>
     <br><br><br><br><br>
   </div>
   <br>
