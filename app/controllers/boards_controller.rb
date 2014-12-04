@@ -11,6 +11,7 @@ def create
 end
 
 def show
+	@all_boards = Board.all
 	@board = Board.find(params[:id])
 end
 
