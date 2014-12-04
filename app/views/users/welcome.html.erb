@@ -21,7 +21,7 @@
 	No boards :(
 <% else %>
 	<% @user.boards.each do |b| %>
-		<div class="grid">
+		<div class="grid" onclick="window.location.href = '<%= board_path(:id => b.id) %>'">
 			<figure class="effect">
 				<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= b.latitude %>,<%= b.longitude %>&zoom=12&size=350x350"/>
 				<figcaption>
