@@ -9,6 +9,9 @@
   <h1 id="home-header" class="white"> Travl </h1>
   <h2 class="white"> Plan your dream vacation </h2>
   <% if user_signed_in? %>
+    <div id="flash_notice"> Welcome back, Kevin! </div>
+  <% end %>
+  <% if user_signed_in? %>
     <div id="home-tab1">
       <%= link_to 'Dashboard', welcome_path, class: "button bg1"%>
     </div>
@@ -21,11 +24,65 @@
   <% end %>
 </div>
 <div class="container">
-  <div class="content">
-    <h1> What We Do </h1>
-    <br><br>
-    <p> Travl is an online travel planner. Whenever you go to a new destination, there are plenty of adventures and scenes to experience and see! We've built this tool so that you can figure out what you want to do easily and coordinate with your travel companions at your convenience. Feel free to try it out below: </p>
+  <br><br><br>
+  <h1> What We Do </h1>
+  <br><br>
+  <div id="home-grid-row">
+    <div class="grid">
+      <figure class="effect">
+        <img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
+        <figcaption>
+          Board Title
+          <p class="icon-links">
+            <a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
+            <a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
+            <a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
+          </p>
+          <p class="description">Here is a description!</p>
+        </figcaption>     
+      </figure>
+    </div>
+    <div class="grid">
+      <figure class="effect">
+        <img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
+        <figcaption>
+          Board Title
+          <p class="icon-links">
+            <a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
+            <a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
+            <a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
+          </p>
+          <p class="description">Here is a description!</p>
+        </figcaption>     
+      </figure>
+    </div>
+    <div class="grid">
+      <figure class="effect">
+        <img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
+        <figcaption>
+          Board Title
+          <p class="icon-links">
+            <a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
+            <a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
+            <a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
+          </p>
+          <p class="description">Here is a description!</p>
+        </figcaption>     
+      </figure>
+    </div>
   </div>
+  <div class="content">
+    <p> Travl is an online travel planner. Whenever you go to a new destination, there are plenty of adventures and scenes to experience and see! We've built this tool so that you can figure out what you want to do easily and coordinate with your travel companions at your convenience. Feel free to try it out below: </p>
+    <br>
+  </div>
+  <div class="container gray-bg">
+    <img id="home-travl" src="<%= asset_path('travel.svg') %>">
+    <h1 class="white"> Happy Travling! </h2>
+    <br>
+    <%= link_to 'Start Now', new_user_session_path, class: "button"%>
+    <br><br><br><br><br>
+  </div>
+  <br>
 </div>
 <script>
   $(document).ready(function() {
