@@ -5,7 +5,7 @@ end
 
 def create
 	@board = Board.new(board_params)
-
+	@board.user_id = board_params[:user_id]
 	@board.save
 	redirect_to @board
 end
@@ -17,7 +17,7 @@ end
 
 private
   def board_params
-    params.require(:board).permit(:title)
+    params.require(:board).permit(:title, :user_id)
   end
 
 end

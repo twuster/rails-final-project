@@ -15,22 +15,26 @@
 <div class="welcome-content-container">
 
 <div class="welcome-message">
-<h4>Your Boards</h4>
+<h4><%= current_user.email %>'s Boards</h4>
 
-<% @boards.each do |b| %>
-	<div class="grid">
-		<figure class="effect">
-			<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
-			<figcaption>
-				<%= link_to b.title, board_path(:id => b.id) %>
-				<p class="icon-links">
-					<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
-					<a href="#"><i class="fa fa-edit"></i> &nbsp; </a>
-					<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; </a>
-				</p>
-			</figcaption>			
-		</figure>
-	</div>
+<% if @user.boards.count == 0 %>
+	No boards :(
+<% else %>
+	<% @user.boards.each do |b| %>
+		<div class="grid">
+			<figure class="effect">
+				<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
+				<figcaption>
+					<%= link_to b.title, board_path(:id => b.id) %>
+					<p class="icon-links">
+						<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
+						<a href="#"><i class="fa fa-edit"></i> &nbsp; </a>
+						<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; </a>
+					</p>
+				</figcaption>			
+			</figure>
+		</div>
+	<% end %>
 <% end %>
 
 </div>
