@@ -3,12 +3,12 @@
 	<center>
   		<img class="welcome-logo" src="<%= asset_path('logo.png') %>">
   	</center>
-	<h3>Hi Kevin!</h3>
+	<h3>Hi <%= User.name %>!</h3>
 	<ul class="welcome-nav-links">
-		<li>All Boards</li>
-		<li>New Board</li>
-		<li>Settings</li>
-		<li>Sign Out</li>
+		<li><%= link_to 'All Boards', welcome_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
+		<li><%= link_to 'New Board', new_board_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
+		<li><a class="welcome-sidebar-link" href="#">Settings</a></li>
+		<li><%= link_to 'Sign Out', destroy_user_session_path, :method=>'delete', class: 'welcome-sidebar-link' %></li>
 	</ul>
 
 </div>
@@ -18,51 +18,21 @@
 <div class="welcome-message">
 <h4>Your Boards</h4>
 
-<div class="grid">
-	<figure class="effect">
-		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.30925,-122.0436444&zoom=11&size=350x350"/>
-		<figcaption>
-			Board Title
-			<p class="icon-links">
-				<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
-			</p>
-			<p class="description">Here is a description!</p>
-		</figcaption>			
-	</figure>
-</div>
-
-
-<div class="grid">
-	<figure class="effect">
-		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
-		<figcaption>
-			Board Title
-			<p class="icon-links">
-				<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
-			</p>
-			<p class="description">Here is a description!</p>
-		</figcaption>			
-	</figure>
-</div>
-
-<div class="grid">
-	<figure class="effect">
-		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=350x350"/>
-		<figcaption>
-			Board Title
-			<p class="icon-links">
-				<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
-			</p>
-			<p class="description">Here is a description!</p>
-		</figcaption>			
-	</figure>
-</div>
+<% @boards.each do |b| %>
+	<div class="grid">
+		<figure class="effect">
+			<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
+			<figcaption>
+				<%= link_to b.title, board_path(:id => b.id) %>
+				<p class="icon-links">
+					<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
+					<a href="#"><i class="fa fa-edit"></i> &nbsp; </a>
+					<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; </a>
+				</p>
+			</figcaption>			
+		</figure>
+	</div>
+<% end %>
 
 </div>
 

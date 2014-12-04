@@ -1,0 +1,40 @@
+.new-board-input {
+	float: left;
+	margin-right: 0px;
+	width: 200px;
+	border: none;
+	background: #edf2f6;
+	padding: 8px;
+	font-size: 13px;
+}
+
+::-webkit-input-placeholder {
+   color: #6f7e95;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #6f7e95;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #6f7e95;
+}
+
+:-ms-input-placeholder {  
+   color: #6f7e95;
+}
+
+.new-board-submit {
+	margin-left: -10px;
+	border: none;
+	color: #edf2f6;
+	padding: 8px;
+	font-size: 13px;
+	background: #48b9bd;
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
+}
+
+.new-board-submit:hover {
+	background: #6f7e95;
+}

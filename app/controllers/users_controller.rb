@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def welcome
+    @boards = Board.all
   end
 
 end
