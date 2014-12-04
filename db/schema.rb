@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20141204001549) do
+=======
 ActiveRecord::Schema.define(version: 20141203233733) do
+>>>>>>> 01e166b1bc13e5d76f62b4d5336dd73dcd19cffe
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +37,8 @@ ActiveRecord::Schema.define(version: 20141203233733) do
   end
 
   create_table "pins", force: true do |t|
-    t.string   "title"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.string   "name"
+    t.integer  "board_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
