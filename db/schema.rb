@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125233929) do
+ActiveRecord::Schema.define(version: 20141204001549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +31,8 @@ ActiveRecord::Schema.define(version: 20141125233929) do
   end
 
   create_table "pins", force: true do |t|
-    t.string   "title"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.string   "name"
+    t.integer  "board_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
