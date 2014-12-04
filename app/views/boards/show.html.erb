@@ -15,6 +15,24 @@
 <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js" type="text/javascript"></script>
 
 <script type="text/javascript"> 
+// Initialize the map
+var map = null;
+var marker = null;
+
+window.onload = initialize;
+
+function createMap() {
+	console.log("created map");
+	var myOptions = {
+		zoom: <%= @board.default_zoom %>,
+		center: new google.maps.LatLng("<%= @board.full_view_latitude %>", "<%= @board.full_view_longitude %>"),
+		mapTypeControl: true,
+		navigationControl: true,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	map = new google.maps.Map(document.getElementById("full-view-map"), myOptions);
+}
+
 // MAGIC
 $(document).ready(function(){    
 	if(document.URL.indexOf("#")==-1){
@@ -36,19 +54,12 @@ function openBoardDetails(board) {
 	}
 };
 
-// Initialize the map
-var map = null;
-var marker = null;
-
 var infowindow = new google.maps.InfoWindow({ 
 	size: new google.maps.Size(200, 300)
 });
 
-var current_coords;
-
 // A function to create the marker and set up the event window function 
 function createMarker(latlng, name, coordinates, html) {
-	current_coords = coordinates; // LatLng Object
 	var contentString = html;
 	var marker = new google.maps.Marker({
 		position: latlng,
@@ -62,21 +73,7 @@ function createMarker(latlng, name, coordinates, html) {
 	});
 	google.maps.event.trigger(marker, 'click');    
 	return marker;
-}
-
-function renderPin() {
-	console.log("<%= @all_boards.to_json %>");
-	var boardID = "<%= @board.id %>";
-	var pinCoordinates = current_coords;
-	var input_value = document.getElementById('new-board-input').value;
-
-	if (input_value.length == 0) {
-		window.alert("Please name your pin!");
-	} 
-	else {
-		window.alert("About to create pin with title: " + input_value);
-	}
-}
+};
 
 var hiddenLatitude;
 var hiddenLongitude;
@@ -84,69 +81,26 @@ var hiddenLongitude;
 function fillHiddenParams() {
 	document.getElementById('hidden-latitude').value = hiddenLatitude;
 	document.getElementById('hidden-longitude').value = hiddenLongitude;
-}
-
-function loadAllPins(latitude, longitude) {
-	var marker = new google.maps.Marker({
-		map: map,
-		draggable: true,
-		position: new google.maps.LatLng(longitude, latitude),
-		visible: true
-	});
-
-	var boxText = document.createElement("div");
-	boxText.style.cssText = "color: #354052; background: #fff; padding: 10px; font-size: 13px; font-weight: 300; border-radius: 10px";
-	boxText.innerHTML = "Title Of Marker";
-
-	var boxOptions = {
-		content: boxText,
-		disableAutoPan: false,
-		maxWidth: 0,
-		pixelOffset: new google.maps.Size(-110, 10),
-		zIndex: null,
-		boxStyle: { 
-			opacity: 1,
-			width: "250px",
-		},
-		closeBoxMargin: "10px 2px 2px 2px",
-		closeBoxURL: "http://www.onetravel.com/travel/resources/widget-v1/images/close.png",
-		infoBoxClearance: new google.maps.Size(1, 1),
-		isHidden: false,
-		pane: "floatPane",
-		enableEventPropagation: false
-	};
-
-	var ib = new InfoBox(boxOptions);
-	ib.open(map, marker);
-
-}
+};
 
 function initialize() {
-	var myOptions = {
-		zoom: <%= @board.default_zoom %>,
-		center: new google.maps.LatLng("<%= @board.full_view_latitude %>", "<%= @board.full_view_longitude %>"),
-		mapTypeControl: true,
-		navigationControl: true,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+	if (map === null) {
+		window.alert("map null at initialize");
+		createMap()
 	}
-	map = new google.maps.Map(document.getElementById("full-view-map"), myOptions);
 
 	google.maps.event.addListener(map, 'click', function() { infowindow.close(); });
 
 	google.maps.event.addListener(map, 'click', function(event) {
 
-		if (marker) {
-			marker.setMap(null);
-			marker = null;
-		}
+	if (marker) {
+		marker.setMap(null);
+		marker = null;
+	}
 
-		hiddenLatitude = event.latLng.lat();
-		hiddenLongitude = event.latLng.lng();
+	hiddenLatitude = event.latLng.lat();
+	hiddenLongitude = event.latLng.lng();
 
-		// marker = createMarker(event.latLng, "name", event.latLng, '' +
-		// 	'<input id="new-board-input" class="new-board-input" placeholder="Title"> <button class="new-pin-submit" onclick="renderPin()">Add Pin</button>' + 
-		// 	'<br>');
-	
 	marker = createMarker(event.latLng, "name", event.latLng, '' +
 		'<%= form_for :pin, url: pins_path do |f| %>' +
 		'<%= f.text_field :title, placeholder: "Title", :required => true, class: "new-board-input" %>' +
@@ -155,7 +109,7 @@ function initialize() {
 		'<%= f.hidden_field :lng, { :id => "hidden-longitude" } %>' +
 		'<%= f.submit "Add Pin", class: "new-board-submit", :onclick => "fillHiddenParams()" %>' +
 		'<% end %>'); 
-});
+	});
 
 	var markers = [];
 	// Create the search box and link it to the UI element.
@@ -176,57 +130,86 @@ function initialize() {
 			marker.setMap(null);
 		}
 
-    // For each place, get the icon, place name, and location.
-    markers = [];
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0, place; place = places[i]; i++) {
-    	var image = {
-    		url: place.icon,
-    		size: new google.maps.Size(71, 71),
-    		origin: new google.maps.Point(0, 0),
-    		anchor: new google.maps.Point(17, 34),
-    		scaledSize: new google.maps.Size(30, 30)
-    	};
+		// For each place, get the icon, place name, and location.
+		markers = [];
 
-      // Create a marker for each place.
-      var marker = new google.maps.Marker({
-      	map: map,
-      	icon: image,
-      	title: place.name,
-      	position: place.geometry.location
-      });
+		var bounds = new google.maps.LatLngBounds();
+		for (var i = 0, place; place = places[i]; i++) {
+			var image = {
+				url: place.icon,
+				size: new google.maps.Size(71, 71),
+				origin: new google.maps.Point(0, 0),
+				anchor: new google.maps.Point(17, 34),
+				scaledSize: new google.maps.Size(30, 30)
+			};
 
-      markers.push(marker);
+			// Create a marker for each place.
+			var marker = new google.maps.Marker({
+				map: map,
+			  	icon: image,
+			  	title: place.name,
+			  	position: place.geometry.location
+			});
 
-      bounds.extend(place.geometry.location);
-  }
+			markers.push(marker);
 
-  var northeast = bounds.getNorthEast();
-  var southwest = bounds.getSouthWest(); 
+			bounds.extend(place.geometry.location);
+		}
 
-  var northeast_lat = northeast.lat();
-  var northeast_long = northeast.lng();
-  var southwest_lat = southwest.lat();
-  var southwest_long = southwest.lng();
+		var northeast = bounds.getNorthEast();
+		var southwest = bounds.getSouthWest(); 
 
-  var new_northeast = new google.maps.LatLng(northeast_lat + 0.2, northeast_long + 0.2);
-  var new_southwest = new google.maps.LatLng(southwest_lat - 0.2, southwest_long - 0.2);
+		var northeast_lat = northeast.lat();
+		var northeast_long = northeast.lng();
+		var southwest_lat = southwest.lat();
+		var southwest_long = southwest.lng();
 
-  bounds = new google.maps.LatLngBounds(new_southwest, new_northeast);
-  map.fitBounds(bounds);
+		var new_northeast = new google.maps.LatLng(northeast_lat + 0.2, northeast_long + 0.2);
+		var new_southwest = new google.maps.LatLng(southwest_lat - 0.2, southwest_long - 0.2);
 
-});
+		bounds = new google.maps.LatLngBounds(new_southwest, new_northeast);
+		map.fitBounds(bounds);
+	});
 
-google.maps.event.addListener(map, 'bounds_changed', function() {
-	var bounds = new google.maps.LatLngBounds(
-		new google.maps.LatLng(-133.8902, 151.1759),
-		new google.maps.LatLng(133.8474, 151.2631));
-	searchBox.setBounds(bounds);
-});
+};
+    
+function loadPin(title, latitude, longitude) {
+	if (map === null) {
+		window.alert("map null at load pin");
+	};
+
+	var new_marker = new google.maps.Marker({
+		map: map,
+		draggable: false,
+		position: new google.maps.LatLng(longitude, latitude),
+		visible: true
+	});
+
+	new_marker.set(map);
+	// var boxText = document.createElement("div");
+	// boxText.style.cssText = "color: #354052; background: #fff; padding: 10px; font-size: 13px; font-weight: 300; border-radius: 10px";
+	// boxText.innerHTML = title;
+
+	// var boxOptions = {
+	// 	content: boxText,
+	// 	disableAutoPan: false,
+	// 	maxWidth: 0,
+	// 	pixelOffset: new google.maps.Size(-110, 10),
+	// 	zIndex: null,
+	// 	boxStyle: { 
+	// 		opacity: 1,
+	// 		width: "250px",
+	// 	},
+	// 	closeBoxMargin: "10px 2px 2px 2px",
+	// 	closeBoxURL: "http://www.onetravel.com/travel/resources/widget-v1/images/close.png",
+	// 	infoBoxClearance: new google.maps.Size(1, 1),
+	// 	isHidden: false,
+	// 	pane: "floatPane",
+	// 	enableEventPropagation: false
+	// };
+	// var ib = new InfoBox(boxOptions);
+	// ib.open(map, new_marker);
 }
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
 </script> 
 
 <div class="board-content-container">
@@ -249,7 +232,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 					<li>No Pins :(</li>
 					<% else %>
 					<% @board.pins.each do |p| %>
-					<li><%= p.title %> <img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadAllPins(36.6684189479, -121.025390625)"> </li>
+					<!-- NEED TO IMPLEMENT THIS JAVASCRIPT CALL -->
+					<li><%= p.title %> <img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('<%= p.title %>', <%= p.lat %>, <%= p.lng %>)"> </li>
 					<% end %>
 					<% end %>
 				</ul> 
