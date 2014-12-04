@@ -188,10 +188,14 @@ figure.effect p.icon-links a {
 	text-decoration: none;
 	float: right;
 	color: #d8dfe5;
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
 }
 
 figure.effect:hover p.icon-links a:hover,
 figure.effect:hover p.icon-links a:focus {
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
 	color: #119cfb;
 }
 
@@ -215,6 +219,8 @@ figure.effect p.icon-links a {
 	transition: transform 0.35s;
 	-webkit-transform: translate3d(0,200%,0);
 	transform: translate3d(0,200%,0);
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
 }
 
 figure.effect p.icon-links a span::before {

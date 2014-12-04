@@ -12,6 +12,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pg'
+gem 'figaro'
 gem 'simple_form'
 gem 'thin'
 gem 'font-awesome-sass'
