@@ -22,7 +22,7 @@ body, html {
 }
 
 .content {
-  padding: 100px;
+  padding: 50px;
   width: 600px;
   margin: auto;
 }
@@ -60,21 +60,25 @@ p {
   display: inline-block;
   margin: auto;
   padding: 15px 25px;
+  line-height: 1.5;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   font-size: 16px;
   border-radius: 6px;
   font-weight: 400;
-  background: $blue;
+  background: $dark-blue;
   margin-top: 15px;
   color: #fff;
   border: none;
   &:hover {
     cursor: pointer;
-    background: darken($blue, 20);
+    background: darken($dark-blue, 20);
   }
 }
 
+.gray-bg {
+  background: $blue;
+}
 
 .bg1 {
   background: $primary-color;
@@ -90,4 +94,24 @@ p {
 
 .bg2:hover {
   background: darken($secondary-color, 20);
+}
+
+#flash_notice {
+  position: absolute;
+  z-index: 1001;
+  top: 10px;
+  left: 25px;
+  padding: 15px 25px;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  background: $blue;
+  border-radius: 6px;
+  margin-top: 15px;
+  color: #fff;
+  border: none;
+  transition: 1s;
+  opacity: 1;
 }
