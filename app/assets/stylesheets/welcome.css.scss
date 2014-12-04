@@ -12,6 +12,14 @@ h4 {
   	margin-bottom: 15px;
 }
 
+.welcome-sidebar-link {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	text-decoration: none;
+}
+
 .filler-small {
 	height: 30px;
 }
@@ -57,14 +65,16 @@ h4 {
 }
 
 .welcome-nav-links li {
-	border-left: 2px solid #354052;
+	border-left: 3px solid #354052;
 	padding: 10px;
 	font-weight: 300;
 	font-size: 14px;
+	-webkit-transition: all 0.75s;
+	transition: all 0.75s;
 }
 
 .welcome-nav-links li:hover {
-	border-left: 2px solid #43babc;
+	border-left: 3px solid #43babc;
 	background: #2f3849;
 }
 
@@ -111,7 +121,7 @@ h4 {
 }
 
 .grid figure:hover > .grid-img {
-	opacity: 0.35;
+	opacity: 0.5;
 	-webkit-transition: opacity 0.35s;
 	transition: opacity 0.35s;
 }

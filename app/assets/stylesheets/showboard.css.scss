@@ -1,0 +1,74 @@
+.full-view-map {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 900;
+	border: none;
+}
+
+.board-content-container {
+	font-size: 14px;
+	margin-left: 220px;
+}
+
+.board-content {
+	position: absolute;
+	z-index: 1000;
+}
+
+.board-title {
+	color: #FFF;
+	background: #354052;
+	position: fixed;
+	bottom: 0px;
+	right: 50px;
+	width: 280px;
+	display: block;
+	overflow: hidden;
+	height: 40px;
+	-webkit-transition: all 0.5s cubic-bezier(0, 1, 0.5, 1);
+	-moz-transition: all 0.5s cubic-bezier(0, 1, 0.5, 1);
+	-ms-transition: all 0.5s cubic-bezier(0, 1, 0.5, 1);
+	transition: all 0.5s cubic-bezier(0, 1, 0.5, 1);
+}
+
+.board-title-preview {
+	box-sizing: border-box;
+	padding: 10px;
+	height: 40px;
+	display: block;
+}
+
+.board-title-open {
+	min-height: 250px;
+}
+
+.board-name {
+	float: left;
+}
+
+.board-options {
+	float: right
+}
+
+.edit-board {
+	padding: 10px;
+	display: block;
+	height: 100%;
+	background: #fff;
+	font-weight: 300;
+	font-size: 13px;
+	color: #555;
+}
+
+.board-add-pin {
+	color: #fff;
+	border: 0px;
+	background: #43babc;
+	font-size: 13px;
+	padding: 8px;
+}
+
+
+
+

@@ -3,12 +3,12 @@
 	<center>
   		<img class="welcome-logo" src="<%= asset_path('logo.png') %>">
   	</center>
-	<h3>Hi Kevin!</h3>
+	<h3>Hi <%= User.name %>!</h3>
 	<ul class="welcome-nav-links">
-		<li>All Boards</li>
-		<li>New Board</li>
-		<li>Settings</li>
-		<li>Sign Out</li>
+		<li><%= link_to 'All Boards', welcome_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
+		<li><%= link_to 'New Board', new_board_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
+		<li><a class="welcome-sidebar-link" href="#">Settings</a></li>
+		<li><%= link_to 'Sign Out', destroy_user_session_path, :method=>'delete', class: 'welcome-sidebar-link' %></li>
 	</ul>
 
 </div>
@@ -18,6 +18,11 @@
 <div class="welcome-message">
 <h4>Your Boards</h4>
 
+<% @boards.each do |b| %>
+	<%= b.title %>
+<% end %>
+
+<p>
 
 <div class="grid">
 	<figure class="effect">
@@ -29,7 +34,6 @@
 				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
 				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
 			</p>
-			<p class="description">Here is a description!</p>
 		</figcaption>			
 	</figure>
 </div>
@@ -45,7 +49,6 @@
 				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
 				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
 			</p>
-			<p class="description">Here is a description!</p>
 		</figcaption>			
 	</figure>
 </div>
@@ -60,7 +63,6 @@
 				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
 				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
 			</p>
-			<p class="description">Here is a description!</p>
 		</figcaption>			
 	</figure>
 </div>

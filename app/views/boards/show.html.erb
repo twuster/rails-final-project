@@ -1,4 +1,66 @@
-<p>
-  <strong>Title:</strong>
-  <%= @board.title %>
-</p>
+<div class="welcome-side-bar">
+	<div class="filler-medium"></div>
+	<center>
+  		<img class="welcome-logo" src="<%= asset_path('logo.png') %>">
+  	</center>
+	<h3>Hi <%= User.name %>!</h3>
+	<ul class="welcome-nav-links">
+		<li><%= link_to 'All Boards', welcome_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
+		<li><%= link_to 'New Board', new_board_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
+		<li><a class="welcome-sidebar-link" href="#">Settings</a></li>
+		<li><%= link_to 'Sign Out', destroy_user_session_path, :method=>'delete', class: 'welcome-sidebar-link' %></li>
+	</ul>
+</div>
+    
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+function openBoardDetails(board) {
+	e = document.getElementById(board);
+	e.classList.toggle('board-title-open');
+};
+
+function initialize() {
+  var mapOptions = {
+    zoom: 4,
+    center: new google.maps.LatLng(42.5, -80.35),
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+    },
+    zoomControl: true,
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.SMALL
+    }
+  }
+  var map = new google.maps.Map(document.getElementById('full-view-map'),
+                                mapOptions);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+<div class="board-content-container">
+	<div class="board-content">
+		<div class="board-title board-title-open" id="board-title">
+			<div class="board-title-preview" onclick="openBoardDetails('board-title')">
+				<span class="board-name"><%= @board.title %></span>
+				<span class="board-options"><i class="fa fa-chevron-up"></i></span>
+			</div>
+			<div class="edit-board">
+				Contributor: User <br>
+				Last Updated: Today <br>
+				Something: Hello <br> <br>
+				<button class="board-add-pin">Add Pin</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="full-view-map" class="full-view-map">
+
+	</div>
+</div>
+
+
