@@ -1,14 +1,16 @@
 class PinsController < ApplicationController
   def new
-  	@pin = Pin.new
   end
 
   def create
-  	@pin = Pin.new(pin_params)
-  	@pin.board_id = pin_params[:board_id]
-
-  	@pin.save
-  	redirect_to :back
+    if pin_params[:title]
+    	@pin = Pin.new(pin_params)  	
+      @pin.board_id = pin_params[:board_id]
+      @pin.save   	
+      redirect_to :back
+    else 
+      redirect_to :back
+    end
   end
 
   def show

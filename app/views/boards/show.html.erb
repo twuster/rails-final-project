@@ -103,7 +103,7 @@ function initialize() {
 		 
 		marker = createMarker(event.latLng, "name", event.latLng, '' +
 			'<%= form_for :pin, url: pins_path do |f| %>' + 
-			'<%= f.text_field :title, placeholder: "Title", class: "new-board-input" %>' +
+			'<%= f.text_field :title, placeholder: "Title", :required => true, class: "new-board-input" %>' +
 			'<%= f.hidden_field :board_id, :value => @board.id %>' +
 			'<%= f.submit "Add Pin", class: "new-board-submit" %>' +
 			'<% end %>'); 
