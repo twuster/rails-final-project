@@ -3,7 +3,7 @@
 	<center>
   		<img class="welcome-logo" src="<%= asset_path('logo.png') %>">
   	</center>
-	<h3>Hi <%= User.name %>!</h3>
+	<h3>Hi <%= current_user.name %>!</h3>
 	<ul class="welcome-nav-links">
 		<li><%= link_to 'All Boards', welcome_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
 		<li><%= link_to 'New Board', new_board_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
@@ -15,7 +15,7 @@
 <div class="welcome-content-container">
 
 <div class="welcome-message">
-<h4><%= current_user.email %>'s Boards</h4>
+<h4><%= current_user.name %>'s Boards</h4>
 
 <% if @user.boards.count == 0 %>
 	No boards :(
