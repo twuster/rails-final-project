@@ -71,6 +71,7 @@ p {
   color: #fff;
   border: none;
   &:hover {
+    color: #fff;
     cursor: pointer;
     background: darken($dark-blue, 20);
   }
