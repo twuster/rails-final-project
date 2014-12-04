@@ -23,7 +23,7 @@
 	<% @user.boards.each do |b| %>
 		<div class="grid">
 			<figure class="effect">
-				<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= b.latitude %>,<%= b.longitude %>&zoom=12&size=350x350"/>
+				<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= b.latitude %>,<%= b.longitude %>&zoom=10&size=350x350"/>
 				<figcaption>
 					<%= link_to b.title, board_path(:id => b.id) %>
 					<p class="icon-links">
