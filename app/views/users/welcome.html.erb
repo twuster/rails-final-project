@@ -19,53 +19,20 @@
 <h4>Your Boards</h4>
 
 <% @boards.each do |b| %>
-	<%= b.title %>
+	<div class="grid">
+		<figure class="effect">
+			<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
+			<figcaption>
+				<%= link_to b.title, board_path(:id => b.id) %>
+				<p class="icon-links">
+					<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
+					<a href="#"><i class="fa fa-edit"></i> &nbsp; </a>
+					<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; </a>
+				</p>
+			</figcaption>			
+		</figure>
+	</div>
 <% end %>
-
-<p>
-
-<div class="grid">
-	<figure class="effect">
-		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.30925,-122.0436444&zoom=11&size=350x350"/>
-		<figcaption>
-			Board Title
-			<p class="icon-links">
-				<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
-			</p>
-		</figcaption>			
-	</figure>
-</div>
-
-
-<div class="grid">
-	<figure class="effect">
-		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=37.871899,-122.25854&zoom=12&size=350x350"/>
-		<figcaption>
-			Board Title
-			<p class="icon-links">
-				<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
-			</p>
-		</figcaption>			
-	</figure>
-</div>
-
-<div class="grid">
-	<figure class="effect">
-		<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=350x350"/>
-		<figcaption>
-			Board Title
-			<p class="icon-links">
-				<a href="#"><i class="fa fa-heart"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-edit"></i> &nbsp; &nbsp;</a>
-				<a href="#"><i class="fa fa-location-arrow"></i> &nbsp; &nbsp;</a>
-			</p>
-		</figcaption>			
-	</figure>
-</div>
 
 </div>
 

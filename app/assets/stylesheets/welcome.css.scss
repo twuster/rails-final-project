@@ -142,6 +142,17 @@ h4 {
 	pointer-events: none;
 }
 
+figcaption a {
+	text-decoration: none;
+	font-weight: 400;
+	text-align: left;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 18px;
+	color: #46bbc2;
+	text-transform: uppercase;
+}
+
 .grid figure figcaption,
 .grid figure figcaption > a {
 	position: absolute;

@@ -67,8 +67,27 @@
 	background: #43babc;
 	font-size: 13px;
 	padding: 8px;
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
 }
 
+.board-add-pin:hover {
+	background: #6f7e95;
+}
 
+.new-pin-submit {
+	float: right;
+	margin-left: -10px;
+	border: none;
+	color: #edf2f6;
+	padding: 8px;
+	font-size: 13px;
+	background: #48b9bd;
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
+}
 
+.new-pin-submit:hover {
+	background: #6f7e95;
+}
 
