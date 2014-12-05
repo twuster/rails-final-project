@@ -229,8 +229,9 @@ function loadPin(title, latitude, longitude) {
 		content: contentString,
 		size: new google.maps.Size(200, 100)});
 
-    var contentString = title +
-    	"<br> <br>";
+    var contentString = '<div class="pin-infobox">' + 
+    	title +
+    	'</div>';
 
     var infowindow = new google.maps.InfoWindow({content: contentString});
 
