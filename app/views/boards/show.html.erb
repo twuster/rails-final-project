@@ -260,7 +260,7 @@ function centerMap(latitude, longitude) {
 			<div class="edit-board">
 				<center> <br>
 					<a href="#rename-board" class="board-edit-link">Rename Board</a>
-					<button class="board-edit-button">Delete Board</button>
+					<%= link_to 'Delete Board', board_path(:id => @board.id), :method=> :delete, :onclick => "confirm('Are you sure?')", class: "board-edit-link"%>
 					<br> <br>
 				</center>
 				<span class="edit-board-label">Contributor:</span> <%= User.name %> <br>
@@ -273,13 +273,12 @@ function centerMap(latitude, longitude) {
 					<% @board.pins.each do |p| %>
 					<!-- NEED TO IMPLEMENT THIS JAVASCRIPT CALL -->
 					<li><a href="#" onclick="centerMap(<%= p.lat %>, <%= p.lng %>)"><%= p.title %></a>
-						<span class="delete-pin"><%= link_to 'Delete', pin_path(:id => p.id, :board_id => @board.id), :method=> :delete, :confirm => "Are you sure?" %></span>
+						<span class="delete-pin"><%= link_to 'Delete', pin_path(:id => p.id, :board_id => @board.id), :method=> :delete, :onclick => "confirm('Are you sure?')" %></span>
 						<img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('<%= p.title %>', <%= p.lat %>, <%= p.lng %>)"> 
 					</li>
 					<% end %>
 					<% end %>
-				</ul> 
-				<img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="console.log(markers_to_load)"> 
+				</ul>  
 			</div>
 		</div>
 	</div>
