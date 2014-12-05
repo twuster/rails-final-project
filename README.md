@@ -2,7 +2,7 @@ Title: Travl
 Team Members: Erica Yin, Kevin Wu, Tony Wu, Yipin (Casber) Wang
 Demo Link: http://travl-rails.herokuapp.com
 
-Description: A web application where users can save their favorite areas using a board and 'pin' and comment on their favorite places, effectively crowdsourcing reviews about local spots and planning their vacations.
+Description: A web application where users can save their favorite areas using a board and 'pin' their favorite places, effectively crowdsourcing reviews about local spots and planning their vacations.
 
 Models and Description
 1. User
