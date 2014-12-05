@@ -208,6 +208,14 @@ function initialize() {
 	});
 	console.log('initialized!');
 };
+
+function getInfoCallback(map, content) {
+    var infowindow = new google.maps.InfoWindow({content: content});
+    return function() {
+            infowindow.setContent(content); 
+            infowindow.open(map, this);
+        };
+}
     
 function loadPin(title, latitude, longitude) {
 	var new_marker = new google.maps.Marker({
@@ -216,8 +224,21 @@ function loadPin(title, latitude, longitude) {
 		title: title,
 		visible: true
 	});
+
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString,
+		size: new google.maps.Size(200, 100)});
+
+    var contentString = title +
+    	"<br> <br>";
+
+    var infowindow = new google.maps.InfoWindow({content: contentString});
+
+    google.maps.event.addListener(new_marker, 'click', getInfoCallback(map, contentString));
+
 	markers_to_load.push(new_marker);
 	new_marker.setMap(map);
+
 	// var boxText = document.createElement("div");
 	// boxText.style.cssText = "color: #354052; background: #fff; padding: 10px; font-size: 13px; font-weight: 300; border-radius: 10px";
 	// boxText.innerHTML = title;
