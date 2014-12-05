@@ -207,6 +207,10 @@ function loadPin(title, latitude, longitude) {
 	// var ib = new InfoBox(boxOptions);
 	// ib.open(map, new_marker);
 }
+
+function centerMap(latitude, longitude) {
+	map.setCenter(new google.maps.LatLng(latitude, longitude));
+}
 </script> 
 
 <div class="board-content-container">
@@ -231,7 +235,7 @@ function loadPin(title, latitude, longitude) {
 					<% else %>
 					<% @board.pins.each do |p| %>
 					<!-- NEED TO IMPLEMENT THIS JAVASCRIPT CALL -->
-					<li><%= p.title %> 
+					<li><a href="#" onclick="centerMap(<%= p.lat %>, <%= p.lng %>)"><%= p.title %></a>
 						<span class="delete-pin"><%= link_to 'Delete', pin_path(:id => p.id, :board_id => @board.id), :method=> :delete, :confirm => "Are you sure?" %></span>
 						<img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('<%= p.title %>', <%= p.lat %>, <%= p.lng %>)"> 
 					</li>
