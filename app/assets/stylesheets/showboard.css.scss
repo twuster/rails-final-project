@@ -7,7 +7,7 @@
 }
 
 .board-content-container {
-	font-size: 14px;
+	font-size: 13px;
 	margin-left: 220px;
 }
 
@@ -70,7 +70,7 @@ h5 {
 	color: #555;
 }
 
-.board-edit-button {
+.board-edit-link, .board-edit-button {
 	color: #fff;
 	border: 0px;
 	background: #43babc;
@@ -80,8 +80,12 @@ h5 {
 	transition: all 0.35s;
 }
 
-.board-edit-button:hover {
+.board-edit-button:hover, .board-edit-link:hover {
 	background: #119cfb;
+}
+
+.board-edit-link:hover {
+	color: #fff;
 }
 
 .new-pin-submit {
@@ -142,4 +146,9 @@ h5 {
 
 .delete-pin a {
 	float: right;
+}
+
+.rename-board {
+	width: 60%;
+	padding: 10px;
 }
