@@ -6,11 +6,11 @@ Description: A web application where users can save their favorite areas using a
 
 Models and Description
 1. User
-  - has name, email, and comments
+  * has name, email, and password
 2. Board
-  - has title, pins and belongs to a User
+  * has title, pins and belongs to a User
 3. Pin
-  - has name and belongs to a User
+  * has name and belongs to a User
 
 Features:
 - Users can log in
@@ -19,7 +19,7 @@ Features:
 - Users can use entire google map interface inside
 
 Division of Labor:
-- Erica: Pins, Boards User Interface, Styling, 
-- Kevin: Heroku, Figaro, Home Page, Styling, Logo, Video
+- Erica: Pins, Boards, User Interface, Styling, 
+- Kevin: Heroku, Figaro, Home, Styling, Logo, Video
 - Tony: Boards
 - Casber: Pins, Writeup
