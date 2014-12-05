@@ -145,16 +145,16 @@ function initialize() {
 			};
 
 			// Create a marker for each place.
-			var marker = new google.maps.Marker({
-				map: map,
-			  	icon: image,
-			  	title: place.name,
-			  	position: place.geometry.location
-			});
+			// var marker = new google.maps.Marker({
+			// 	map: map,
+			//   icon: image,
+			//   title: place.name,
+			//   position: place.geometry.location
+			// });
 
-			markers.push(marker);
-
-			bounds.extend(place.geometry.location);
+			// markers.push(marker);
+			// markers.setMap(marker);
+			// bounds.extend(place.geometry.location);
 		}
 
 		var northeast = bounds.getNorthEast();
@@ -171,18 +171,18 @@ function initialize() {
 		bounds = new google.maps.LatLngBounds(new_southwest, new_northeast);
 		map.fitBounds(bounds);
 	});
-
+	console.log('initialized!');
 };
     
 function loadPin(title, latitude, longitude) {
 	var new_marker = new google.maps.Marker({
-		map: map,
 		draggable: false,
-		position: new google.maps.LatLng(longitude, latitude),
+		position: new google.maps.LatLng(latitude, longitude),
+		title: title,
 		visible: true
 	});
-
 	markers_to_load.push(new_marker);
+	new_marker.setMap(map);
 	// var boxText = document.createElement("div");
 	// boxText.style.cssText = "color: #354052; background: #fff; padding: 10px; font-size: 13px; font-weight: 300; border-radius: 10px";
 	// boxText.innerHTML = title;
@@ -206,6 +206,7 @@ function loadPin(title, latitude, longitude) {
 	// };
 	// var ib = new InfoBox(boxOptions);
 	// ib.open(map, new_marker);
+	console.log('Added ' + title + '!');
 }
 
 function centerMap(latitude, longitude) {
