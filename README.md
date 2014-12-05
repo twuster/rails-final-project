@@ -19,7 +19,7 @@ Features:
 - Users can use entire google map interface inside
 
 Division of Labor:
-- Erica: Pins, Boards, User Interface, Styling, 
-- Kevin: Heroku, Figaro, Home, Styling, Logo, Video
-- Tony: Boards
+- Erica: Pins, Boards, Maps JS, User Interface, Styling, 
+- Kevin: Heroku, Figaro, Maps JS, Home, Styling, Logo, Video
+- Tony: Boards, Maps JS
 - Casber: Pins, Writeup
