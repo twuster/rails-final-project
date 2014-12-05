@@ -3,7 +3,7 @@
 	<center>
   		<img class="welcome-logo" src="<%= asset_path('logo.png') %>">
   	</center>
-	<h3>Hi <%= User.name %>!</h3>
+	<h3>Hi <%= current_user.name %>!</h3>
 	<ul class="welcome-nav-links">
 		<li><%= link_to 'All Boards', welcome_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
 		<li><%= link_to 'New Board', new_board_path, :method=>'get', class: 'welcome-sidebar-link' %></li>
@@ -16,12 +16,11 @@
 
 <div class="welcome-message">
 <h4>Your Boards</h4>
-
 <% if @user.boards.count == 0 %>
 	No boards :(
 <% else %>
 	<% @user.boards.each do |b| %>
-		<div class="grid">
+		<div class="grid" onclick="window.location.href = '<%= board_path(:id => b.id) %>'">
 			<figure class="effect">
 				<img class="grid-img" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= b.latitude %>,<%= b.longitude %>&zoom=10&size=350x350"/>
 				<figcaption>

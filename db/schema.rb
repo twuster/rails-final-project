@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20141204103258) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "board_id"
-    t.decimal  "lat"
-    t.decimal  "lng"
+    t.decimal  "lat",        precision: 10, scale: 6
+    t.decimal  "lng",        precision: 10, scale: 6
   end
 
   create_table "users", force: true do |t|
