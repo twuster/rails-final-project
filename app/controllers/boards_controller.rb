@@ -13,6 +13,9 @@ end
 def show
 	@all_boards = Board.all
 	@board = Board.find(params[:id])
+	if @board.user_id != current_user.id
+		redirect_to root_path
+	end
 end
 
 def destroy
