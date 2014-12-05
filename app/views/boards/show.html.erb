@@ -145,16 +145,16 @@ function initialize() {
 			};
 
 			// Create a marker for each place.
-			var marker = new google.maps.Marker({
-				map: map,
-			  	icon: image,
-			  	title: place.name,
-			  	position: place.geometry.location
-			});
+			// var marker = new google.maps.Marker({
+			// 	map: map,
+			//   icon: image,
+			//   title: place.name,
+			//   position: place.geometry.location
+			// });
 
-			markers.push(marker);
-
-			bounds.extend(place.geometry.location);
+			// markers.push(marker);
+			// markers.setMap(marker);
+			// bounds.extend(place.geometry.location);
 		}
 
 		var northeast = bounds.getNorthEast();
@@ -171,18 +171,18 @@ function initialize() {
 		bounds = new google.maps.LatLngBounds(new_southwest, new_northeast);
 		map.fitBounds(bounds);
 	});
-
+	console.log('initialized!');
 };
     
 function loadPin(title, latitude, longitude) {
 	var new_marker = new google.maps.Marker({
-		map: map,
 		draggable: false,
-		position: new google.maps.LatLng(longitude, latitude),
+		position: new google.maps.LatLng(latitude, longitude),
+		title: title,
 		visible: true
 	});
-
 	markers_to_load.push(new_marker);
+	new_marker.setMap(map);
 	// var boxText = document.createElement("div");
 	// boxText.style.cssText = "color: #354052; background: #fff; padding: 10px; font-size: 13px; font-weight: 300; border-radius: 10px";
 	// boxText.innerHTML = title;
@@ -206,6 +206,11 @@ function loadPin(title, latitude, longitude) {
 	// };
 	// var ib = new InfoBox(boxOptions);
 	// ib.open(map, new_marker);
+	console.log('Added ' + title + '!');
+}
+
+function centerMap(latitude, longitude) {
+	map.setCenter(new google.maps.LatLng(latitude, longitude));
 }
 </script> 
 
@@ -231,7 +236,10 @@ function loadPin(title, latitude, longitude) {
 					<% else %>
 					<% @board.pins.each do |p| %>
 					<!-- NEED TO IMPLEMENT THIS JAVASCRIPT CALL -->
-					<li><%= p.title %> <img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('<%= p.title %>', <%= p.lat %>, <%= p.lng %>)"> </li>
+					<li><a href="#" onclick="centerMap(<%= p.lat %>, <%= p.lng %>)"><%= p.title %></a>
+						<span class="delete-pin"><%= link_to 'Delete', pin_path(:id => p.id, :board_id => @board.id), :method=> :delete, :confirm => "Are you sure?" %></span>
+						<img src="http://s29.postimg.org/gmujanqeb/transparent.png" onload="loadPin('<%= p.title %>', <%= p.lat %>, <%= p.lng %>)"> 
+					</li>
 					<% end %>
 					<% end %>
 				</ul> 

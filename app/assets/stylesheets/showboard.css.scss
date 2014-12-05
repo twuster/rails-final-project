@@ -133,3 +133,13 @@ h5 {
 	font-size: 13px;
 	font-weight: 400;
 }
+
+.all-pins li a, .delete-pin a {
+	margin-top: 3px;
+	font-size: 13px;
+	font-weight: 300;
+}
+
+.delete-pin a {
+	float: right;
+}

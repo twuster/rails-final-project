@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :users
   get 'welcome', to: 'users#welcome', as: 'welcome'
   resources :boards
-  resources :pins, :only => [:show, :new, :create]
+  resources :pins, :only => [:show, :new, :create, :destroy]
 end
