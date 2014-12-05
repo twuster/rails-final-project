@@ -226,27 +226,25 @@ body.remodal_active .remodal {
 }
 
 .remodal-confirm {
-    color: #16a085;
-    border: 2px solid #43babc;
-    background: #f4f4f4;
+    color: #fff;
+    background: #48b9bd;
 }
 
 .remodal-confirm:hover,
 .remodal-confirm:active {
-    color: #f4f4f4;
-    background: #43babc;
+    color: #fff;
+    background: #119cfb;
 }
 
 .remodal-cancel {
-    color: #c0392b;
-    border: 2px solid #c0392b;
-    background: #f4f4f4;
+    color: #fff;
+    background: #6f7e95;
 }
 
 .remodal-cancel:hover,
 .remodal-cancel:active {
-    color: #f4f4f4;
-    background: #c0392b;
+    color: #fff;
+    background: #119cfb;
 }
 
 /* Media queries
