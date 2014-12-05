@@ -19,6 +19,7 @@ def destroy
 	@board = Board.find(params[:id])
 	@board.destroy
 	@board.save
+	redirect_to welcome_path
 end
 
 private
