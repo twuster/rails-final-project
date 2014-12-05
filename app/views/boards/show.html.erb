@@ -283,14 +283,15 @@ function centerMap(latitude, longitude) {
 		</div>
 	</div>
 
-	<div class="remodal" data-remodal-id="rename-board">
-	    <h5>Rename Board</h5>
-	    <p>
-	    <input placeholder="New Name" class="rename-board"> <br>
-	    </p>
-	    <br>
-	    <a class="remodal-cancel" href="#">Cancel</a>
-	    &nbsp; &nbsp;<a class="remodal-confirm" href="#">OK</a>
+	<div class="remodal" data-remodal-id="rename-board" >
+		<h5>Rename Board</h5>
+
+		<%= form_for @board, url:board_path do |f| %>
+	  	<%= f.text_field :title, placeholder:"New Title",class:"rename-board" %>
+	  	<br>
+	  	<br>
+	  	<%= f.submit class:"rename-board" %>
+		<% end %>
 	</div>
 
 	<div id="full-view-map" class="full-view-map">

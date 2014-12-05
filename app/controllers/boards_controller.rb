@@ -22,6 +22,12 @@ def destroy
 	redirect_to welcome_path
 end
 
+def update
+	@board = Board.find(params[:id])
+	@board.update_attributes(board_params)
+	redirect_to welcome_path
+end
+
 private
   def board_params
     params.require(:board).permit(:title, :user_id)
