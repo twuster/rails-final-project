@@ -9,7 +9,7 @@
   <h1 id="home-header" class="white"> Travl </h1>
   <h2 class="white"> Plan your dream vacation </h2>
   <% if user_signed_in? %>
-      <div id="flash_notice"> Welcome back, <%= current_user.name %></div>
+      <div id="flash_notice"> Welcome back, <%= current_user.name.titleize %></div>
   <% end %>
   <% if user_signed_in? %>
     <div id="home-tab1">

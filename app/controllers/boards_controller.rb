@@ -15,6 +15,12 @@ def show
 	@board = Board.find(params[:id])
 end
 
+def destroy
+	@board = Board.find(params[:id])
+	@board.destroy
+	@board.save
+end
+
 private
   def board_params
     params.require(:board).permit(:title, :user_id)
